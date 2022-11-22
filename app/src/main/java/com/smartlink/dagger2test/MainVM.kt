@@ -12,7 +12,7 @@ import javax.inject.Inject
  * @description:
  * @date :2022/4/29 16:05
  */
-class MainVM @Inject constructor(private val application: Application) {
+class MainVM @Inject constructor(private val application: Application, private val string: String) {
 
     private val TAG = "MainVM"
     fun init() {

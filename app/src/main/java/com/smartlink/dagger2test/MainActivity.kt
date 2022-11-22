@@ -32,7 +32,6 @@ class MainActivity : BaseActivity() {
         val transaction = supportFragmentManager.beginTransaction()
         transaction.add(R.id.fl_content, fragment!!, "HomeFragment").commitAllowingStateLoss()
         var a :Test1Varl = Test1Varl()
-        a.sus()
     }
 
     fun show() {

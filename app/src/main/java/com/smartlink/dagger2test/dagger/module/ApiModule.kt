@@ -13,8 +13,7 @@ import javax.inject.Singleton
  * @date :2022/5/13 14:56
  */
 @Module
-class ApiModule(private val application: Application) {
+class ApiModule(private val string: String) {
     @Provides
-    @Singleton
-    fun provideApi(): Application = this.application
+    fun provideApi(): String = this.string
 }

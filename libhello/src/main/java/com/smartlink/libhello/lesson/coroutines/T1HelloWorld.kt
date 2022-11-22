@@ -20,7 +20,7 @@ import kotlinx.coroutines.*
 class T1HelloWorld {
     companion object {
         @JvmStatic
-        fun main(args: Array<String>)= runBlocking {
+        fun main(args: Array<String>) = runBlocking {
             T1HelloWorld().run {
                 test1()
                 test2()
@@ -57,6 +57,9 @@ class T1HelloWorld {
         job
     }
 
+    /**
+     * suspend 可挂起的标志
+     * */
     suspend fun foo() {
         println("foo wait  1s " + Thread.currentThread().name)
         delay(1000L)
