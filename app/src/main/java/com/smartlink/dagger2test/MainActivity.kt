@@ -1,11 +1,11 @@
 package com.smartlink.dagger2test
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
 import com.smartlink.dagger2test.base.BaseActivity
 import com.smartlink.dagger2test.base.delegate.LogDelegate
-import com.smartlink.libhello.lesson.Test1Varl
-import kotlinx.android.synthetic.main.activity_main.*
+import com.smartlink.dagger2test.databinding.ActivityMainBinding
 import javax.inject.Inject
 
 class MainActivity : BaseActivity() {
@@ -15,29 +15,39 @@ class MainActivity : BaseActivity() {
 
     @Inject
     lateinit var vm: MainVM
-    var fragment: HomeFragment? = null
+
+    @Inject
+    lateinit var inflater: LayoutInflater
+    private var fragment: HomeFragment = HomeFragment()
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         (application as MainApplication).component.inject(this)
-        setContentView(R.layout.activity_main)
-        btn_click.setOnClickListener {
-            show()
-            vm.init()
-            btn_click.setVisibility(View.INVISIBLE)
+        binding = ActivityMainBinding.inflate(inflater).apply {
+            btnClick.setOnClickListener {
+                show()
+                vm.init()
+                binding.btnClick.visibility = View.INVISIBLE
+            }
         }
-        if (fragment == null) {
-            fragment = HomeFragment()
+        setContentView(binding.root)
+        supportFragmentManager.beginTransaction().run {
+            add(R.id.fl_content, fragment, "HomeFragment").commitAllowingStateLoss()
         }
-        val transaction = supportFragmentManager.beginTransaction()
-        transaction.add(R.id.fl_content, fragment!!, "HomeFragment").commitAllowingStateLoss()
-        var a :Test1Varl = Test1Varl()
     }
 
-    fun show() {
-        val transaction = supportFragmentManager.beginTransaction()
-        transaction.show(fragment!!)
-        transaction.commit()
+    override fun onDestroy() {
+        super.onDestroy()
+        binding.apply {
+            btnClick.setOnClickListener(null)
+        }
+    }
+    private fun show() {
+        supportFragmentManager.beginTransaction().run {
+            show(fragment)
+            commit()
+        }
     }
 
 }

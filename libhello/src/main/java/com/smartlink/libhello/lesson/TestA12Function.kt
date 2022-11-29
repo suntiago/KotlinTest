@@ -25,12 +25,24 @@ class TestA12Function {
     }
 
     object Start
+
     /**
      * 拓展函数
      * */
     fun String.expand() {
         println("expand function")
     }
+
+    /**
+     * 拓展参数
+     * */
+    public var String.isowned: Boolean
+        get() {
+            return isowned
+        }
+        set(value) {
+            isowned = value
+        }
 
     //中缀表达式
     infix fun String.should(start: Start): String {

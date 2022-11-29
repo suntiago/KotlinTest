@@ -7,10 +7,13 @@ import kotlinx.coroutines.*
  * 取消与超时
  */
 class T2CancelOutdate {
+
     companion object {
         @JvmStatic
         fun main(args: Array<String>) = runBlocking {
+
             val job = GlobalScope.launch {
+                isrunning
                 try {
                     repeat(1000) {
                         println("repeat times $it")
@@ -33,6 +36,7 @@ class T2CancelOutdate {
 
             /*超时*/
             withTimeout(1000) {
+
                 repeat(100) {
                     println("withtimeout repeat")
                     delay(100)
@@ -41,3 +45,7 @@ class T2CancelOutdate {
         }
     }
 }
+
+public var CoroutineScope.isrunning: Boolean
+    get() = isrunning
+    set(value) {}
