@@ -1,10 +1,11 @@
-package com.smartlink.dagger2test
+package com.smartlink.dagger2test.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import com.smartlink.dagger2test.R
 import com.smartlink.dagger2test.base.BaseFragment
 import com.smartlink.dagger2test.base.delegate.LogFragmentDelegate
 import com.smartlink.dagger2test.databinding.HomeFragemntBinding

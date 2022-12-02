@@ -32,6 +32,7 @@ android {
     }
     buildFeatures {
         viewBinding true
+        dataBinding true
     }
 }
 
@@ -50,4 +51,16 @@ dependencies {
     kapt "com.google.dagger:dagger-compiler:$daggerVersion"
     kaptAndroidTest "com.google.dagger:dagger-compiler:$daggerVersion"
     api project(path:":libhello")
+
+    //okhttp
+    def retrofitOkio = "4.10.0"
+    implementation "com.squareup.okhttp3:okhttp:$retrofitOkio"
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.0'
+
+    //retrofit
+    def retrofitVersion = "2.9.0"
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    implementation "com.squareup.retrofit2:adapter-rxjava3:$retrofitVersion"
+
 }

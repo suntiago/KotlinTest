@@ -2,7 +2,6 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel target="1.7">
-      <module name="Dagger2Test.app" target="11" />
       <module name="KotlinTest.app" target="11" />
     </bytecodeTargetLevel>
   </component>

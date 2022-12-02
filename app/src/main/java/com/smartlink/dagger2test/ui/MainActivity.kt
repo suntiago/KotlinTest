@@ -1,11 +1,14 @@
-package com.smartlink.dagger2test
+package com.smartlink.dagger2test.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import com.smartlink.dagger2test.MainApplication
+import com.smartlink.dagger2test.R
 import com.smartlink.dagger2test.base.BaseActivity
 import com.smartlink.dagger2test.base.delegate.LogDelegate
 import com.smartlink.dagger2test.databinding.ActivityMainBinding
+import com.smartlink.dagger2test.ui.main.MainVM
 import javax.inject.Inject
 
 class MainActivity : BaseActivity() {
@@ -43,6 +46,7 @@ class MainActivity : BaseActivity() {
             btnClick.setOnClickListener(null)
         }
     }
+
     private fun show() {
         supportFragmentManager.beginTransaction().run {
             show(fragment)

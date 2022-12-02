@@ -1,6 +1,6 @@
 package com.smartlink.dagger2test.dagger.module
 
-import android.app.Application
+import com.smartlink.dagger2test.lib.retrofit.RetrofitManager
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -13,7 +13,10 @@ import javax.inject.Singleton
  * @date :2022/5/13 14:56
  */
 @Module
-class ApiModule(private val string: String) {
+@Singleton
+class ApiModule(private val retrofitManager: RetrofitManager) {
+
+    @Singleton
     @Provides
-    fun provideApi(): String = this.string
+    fun providerRetrofitManager(): RetrofitManager = this.retrofitManager
 }
